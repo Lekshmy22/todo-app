@@ -1,0 +1,20 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+   <h1 class="text-center">Todo Index</h1>
+   <div>
+      {%for list in todo%}
+
+       Title: {{list.title}},
+       Created Date: {{list.created_date}},
+       Owner: {{list.owner}},
+       {%if list.status == False%}
+          Status: In Progress
+       {%else%}  
+           Status: Completed
+       {%endif%}
+   <br><br>
+
+   {%endfor%}
+   </div>
+{%endblock%}

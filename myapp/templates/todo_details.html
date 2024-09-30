@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <table class="table table-dark">
+                <h1 class="text-center p-2">Todo details</h1>
+                <tr>
+                    <th>title</th>
+                    <th>status</th>
+                    <th>created date</th>
+                    <th>Action</th>
+                </tr>
+                {%for todo in todolist%}
+                <tr>
+                    <td>{{todo.title}}</td>
+                    <td>
+                    {%if todo.status == False%}
+                          In Progress
+                    {%else%}  
+                          Completed
+                    {%endif%}
+                    </td>
+                    <td>{{todo.created_date}}</td>
+                    <td>
+                        <a href="{%url 'todo-edit' todo.id%}" class="btn btn-outline-warning"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="{%url 'todo-delete' todo.id%}" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                    
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+        <div class="col-2"></div>
+
+    </div>
+
+</div>
+
+{%endblock%}
